@@ -366,16 +366,6 @@ public class KevinBaconUI
         // MAKE THE NORTH TOOLBAR, WHICH WILL HAVE FOUR BUTTONS
         northToolbar = new JPanel();
         northToolbar.setBackground(Color.LIGHT_GRAY);
-        // MAKE AND INIT THE HELP BUTTON
-        helpButton = initToolbarButton(northToolbar, KevinBaconPropertyType.HELP_IMG_NAME);
-        setTooltip(helpButton, KevinBaconPropertyType.HELP_TOOLTIP);        
-        helpButton.addActionListener(new ActionListener()
-            {@Override
-             public void actionPerformed(ActionEvent ae)
-                {
-                    eventHandler.respondToSwitchScreenRequest(UIState.VIEW_HELP_STATE);
-                }
-            });
 
         // MAKE AND INIT THE GAME BUTTON
         gameButton = initToolbarButton(northToolbar, KevinBaconPropertyType.GAME_IMG_NAME);
@@ -399,6 +389,16 @@ public class KevinBaconUI
                 }
             });
 
+        // MAKE AND INIT THE HELP BUTTON
+        helpButton = initToolbarButton(northToolbar, KevinBaconPropertyType.HELP_IMG_NAME);
+        setTooltip(helpButton, KevinBaconPropertyType.HELP_TOOLTIP);        
+        helpButton.addActionListener(new ActionListener()
+            {@Override
+             public void actionPerformed(ActionEvent ae)
+                {
+                    eventHandler.respondToSwitchScreenRequest(UIState.VIEW_HELP_STATE);
+                }
+            });
 
         // MAKE AND INIT THE EXIT BUTTON
         exitButton = initToolbarButton(northToolbar, KevinBaconPropertyType.EXIT_IMG_NAME);

@@ -138,16 +138,11 @@ public class KevinBaconDocumentManager
         try
         {
             Element ol = gameDoc.getElement(GUESSES_LIST_ID);
-            String guessString = "";
-            if (gameInProgress.isWaitingForFilm()) {
-                guessString = graph.getFilm(guess.getId()).getTitle();
-            } else {
-                guessString = graph.getActor(guess.getId()).getFirstName();
-            }
+            String guessString =  guess.getId();
             String liText = START_TAG + HTML.Tag.LI + END_TAG
                             + guessString
                             + START_TAG + SLASH + HTML.Tag.LI + END_TAG;
-            gameDoc.insertBeforeEnd(ol, liText);
+           gameDoc.insertBeforeEnd(ol, liText);
         } 
         // THE ERROR HANDLER WILL DEAL WITH ERRORS ASSOCIATED WITH BUILDING
         // THE HTML FOR THE PAGE, WHICH WOULD LIKELY BE DUE TO BAD DATA FROM
@@ -205,7 +200,13 @@ public class KevinBaconDocumentManager
         {
             // USE THE STATS TO UPDATE THE TABLE AT THE TOP OF THE PAGE
             Element gamePlayedElement = statsDoc.getElement(GAMES_PLAYED_ID);
-            statsDoc.setInnerHTML(gamePlayedElement, EMPTY_TEXT + "BLAH BLAH BLAH");
+            Element gameWonElement = statsDoc.getElement(WINS_ID);
+            Element gamePerfectWinElement = statsDoc.getElement(PERFECT_WINS_ID);
+            Element gameLossesElement = statsDoc.getElement(LOSSES_ID);
+            statsDoc.setInnerHTML(gamePlayedElement, gsm.getNumGamesPlayed() + "");
+            statsDoc.setInnerHTML(gameWonElement, "games won");
+            statsDoc.setInnerHTML(gamePerfectWinElement, "perfect wins");
+            statsDoc.setInnerHTML(gameLossesElement, "losses");
         }
         // WE'LL LET THE ERROR HANDLER TAKE CARE OF ANY ERRORS,
         // WHICH COULD HAPPEN IF XML SETUP FILES ARE IMPROPERLY
@@ -228,5 +229,6 @@ public class KevinBaconDocumentManager
         kit.write(writer, doc, 0, doc.getLength());
         String htmlText = writer.toString();
         System.out.println(htmlText);
+        
     }
 }

@@ -196,12 +196,14 @@ public class KevinBaconGameStateManager
             ui.getDocManager().addGameResultToStatsPage(gameInProgress);
             throw new DeadEndException(guess.toString());
         }
-
+        
         
         // UPDATE THE GAME DISPLAY
-        ui.getDocManager().updateGuessesList(guess);
         //Toggle waitingForFilm Flag
         this.gameInProgress.setWaitingForFilm(!this.gameInProgress.isWaitingForFilm());
         ui.reloadComboBox(nonCircularEdges);
+        if (this.gameInProgress.isWaitingForFilm()) {
+            ui.getDocManager().updateGuessesList(guess);
+        }
     }
 }
