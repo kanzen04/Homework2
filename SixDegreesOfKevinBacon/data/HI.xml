@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <properties>
     <property_list>
-        <property name="GAME_TITLE_TEXT" value="Six Degrees of Kevin Bacon"></property>
+        <property name="GAME_TITLE_TEXT" value="केविन बेकन के छह डिग्री"></property>
         
         <!-- THESE ARE THE GUI IMAGES -->
         <property name="GAME_IMG_NAME"          value="EN_Game.png"></property>
@@ -12,8 +12,8 @@
         <property name="HOME_IMG_NAME"          value="EN_Home.png"></property>
         
         <!-- DATA FILES TO LOAD -->
-        <property name="GAME_FILE_NAME"         value="EN_GameDisplay.html"></property>
-        <property name="STATS_FILE_NAME"        value="EN_StatsDisplay.html"></property>
+        <property name="GAME_FILE_NAME"         value="HI_GameDisplay.html"></property>
+        <property name="STATS_FILE_NAME"        value="HI_StatsDisplay.html"></property>
         <property name="HELP_FILE_NAME"         value="HI_Help.html"></property>
         
         <!-- IN-GAME TEXT -->
@@ -39,11 +39,11 @@
         <property name="HOME_TOOLTIP"           value="Go Home to Game Help Page"></property>
         
         <!-- ERROR FEEDBACK TEXT -->
-        <property name="DEAD_END_GUESS_ERROR_TEXT"      value="You've reached a dead end. You Lose!"></property>
-        <property name="IMAGE_LOADING_ERROR_TEXT"       value="An image was unable to load properly"></property>
-        <property name="INVALID_URL_ERROR_TEXT"         value="Attempting to load a page with an invalid URL"></property>
-        <property name="INVALID_DOC_ERROR_TEXT"         value="Error encountered editing an HTML Document"></property>
-        <property name="INVALID_XML_FILE_ERROR_TEXT"    value="Invalid XML properties file"></property>
-        <property name="DATA_FILE_LOADING_ERROR_TEXT"   value="Error Loading Data Files"></property>
+        <property name="DEAD_END_GUESS_ERROR_TEXT"      value="आप एक मरा हुआ अंत तक पहुँच गए. तुम हार!"></property>
+        <property name="IMAGE_LOADING_ERROR_TEXT"       value="एक छवि ठीक से लोड करने में असमर्थ था"></property>
+        <property name="INVALID_URL_ERROR_TEXT"         value="एक अवैध यूआरएल के साथ एक पृष्ठ लोड करने का प्रयास"></property>
+        <property name="INVALID_DOC_ERROR_TEXT"         value="त्रुटि एक HTML दस्तावेज़ संपादन का सामना करना पड़ा"></property>
+        <property name="INVALID_XML_FILE_ERROR_TEXT"    value="अवैध एक्सएमएल गुण फ़ाइल"></property>
+        <property name="DATA_FILE_LOADING_ERROR_TEXT"   value="लोड करने में त्रुटि डेटा फ़ाइलें"></property>
     </property_list>
 </properties>

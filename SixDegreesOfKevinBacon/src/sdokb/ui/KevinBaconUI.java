@@ -504,6 +504,7 @@ public class KevinBaconUI
                         && (!selectedItem.equals(dummyComboSelection))
                         && (ie.getStateChange() == ItemEvent.SELECTED))
                 {
+
                     setComboAcceptingInput(false);
                     eventHandler.respondToGuessRequest(selectedItem);
                 }
@@ -778,8 +779,8 @@ public class KevinBaconUI
 
         // NOW WE'LL EITHER ADD FILMS OR ACTORS
         KevinBaconGameData gameInProgress = gsm.getGameInProgress();
-        Connection lastNode = gameInProgress.getLastConnection();
-        KevinBaconGameGraphManager graph = gsm.getGameGraphManager();
+        //Connection lastNode = gameInProgress.getLastConnection();
+        //KevinBaconGameGraphManager graph = gsm.getGameGraphManager();
         ArrayList<IMDBObject> sortedIMDBObjects;
         String guessLabelText;
         PropertiesManager props = PropertiesManager.getPropertiesManager();

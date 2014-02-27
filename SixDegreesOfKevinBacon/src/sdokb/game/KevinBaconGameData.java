@@ -87,7 +87,11 @@ public class KevinBaconGameData
     public int getDegrees()                         {   return gamePath.size();     }
     public Iterator<Connection> gamePathIterator()  {   return gamePath.iterator(); }
     public Connection getLastConnection()           {   return lastNode;            }
-
+    public void addGuessMap(String _id, IMDBObject _obj) {
+        guessMap.put(_id, _obj);
+    }
+    public void setLastConnection(Connection lastConnection) { lastNode = lastConnection; }
+    
     /**
      * Accessor method for testing to see if Kevin Bacon
      * has been found this game or not.
@@ -274,6 +278,18 @@ public class KevinBaconGameData
         return text;
     }
     
+    public ArrayList<Connection> getGamePath() {
+       return gamePath;
+    }
+    
+    /**
+     * Add New Game Path
+     * @param newConnection
+     */
+    public void addGamePath(Connection newConnection) {
+        System.out.println("Adding game path " + newConnection.toString());
+        gamePath.add(gamePath.size(), newConnection);
+    }
     /**
      * A textual representation of this object.
      */

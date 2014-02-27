@@ -2,6 +2,8 @@ package sdokb.ui;
 
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.Iterator;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Element;
 import javax.swing.text.html.HTML;
@@ -12,7 +14,7 @@ import sdokb.game.KevinBaconGameData;
 import sdokb.game.KevinBaconGameStateManager;
 import properties_manager.PropertiesManager;
 import sdokb.game.Actor;
-import sdokb.game.IMDBObject;
+import sdokb.game.Connection;
 import sdokb.game.KevinBaconGameGraphManager;
 
 /**
@@ -128,7 +130,7 @@ public class KevinBaconDocumentManager
      * to rebuild the entire page. We just rebuild the list item each time guess
      * is made.
      */
-    public void updateGuessesList(IMDBObject guess)
+    public void updateGuessesList()
     {
         PropertiesManager props = PropertiesManager.getPropertiesManager();
         KevinBaconGameStateManager gsm = ui.getGSM();
@@ -137,12 +139,26 @@ public class KevinBaconDocumentManager
 
         try
         {
-            Element ol = gameDoc.getElement(GUESSES_LIST_ID);
-            String guessString =  guess.getId();
-            String liText = START_TAG + HTML.Tag.LI + END_TAG
+            if (gsm.isGameInProgress()) {
+                Element ol = gameDoc.getElement(GUESSES_LIST_ID);
+                Connection lastPath = gameInProgress.getLastConnection();
+                String guessString = "";
+                if (lastPath != null) {
+                    guessString = lastPath.getActor1Id() + " - " + lastPath.getFilmId() + " - " + lastPath.getActor2Id();
+                } else {
+                    guessString = "";
+                }
+                String liText = START_TAG + HTML.Tag.LI + END_TAG
                             + guessString
                             + START_TAG + SLASH + HTML.Tag.LI + END_TAG;
-           gameDoc.insertBeforeEnd(ol, liText);
+                gameDoc.insertBeforeEnd(ol, liText);
+            } else  {
+                String resultText = "You Lose";
+                if (gameInProgress.isKevinBaconFound()) {
+                    resultText = "You Win!";
+                }
+                gameDoc.insertBeforeEnd(gameDoc.getElement(WIN_DISPLAY_ID), resultText);
+            }
         } 
         // THE ERROR HANDLER WILL DEAL WITH ERRORS ASSOCIATED WITH BUILDING
         // THE HTML FOR THE PAGE, WHICH WOULD LIKELY BE DUE TO BAD DATA FROM
@@ -204,9 +220,45 @@ public class KevinBaconDocumentManager
             Element gamePerfectWinElement = statsDoc.getElement(PERFECT_WINS_ID);
             Element gameLossesElement = statsDoc.getElement(LOSSES_ID);
             statsDoc.setInnerHTML(gamePlayedElement, gsm.getNumGamesPlayed() + "");
-            statsDoc.setInnerHTML(gameWonElement, "games won");
-            statsDoc.setInnerHTML(gamePerfectWinElement, "perfect wins");
-            statsDoc.setInnerHTML(gameLossesElement, "losses");
+            statsDoc.setInnerHTML(gameWonElement, gsm.getNumGamesWon() + "");
+            statsDoc.setInnerHTML(gamePerfectWinElement, gsm.getNumPerfectWins() + "");
+            statsDoc.setInnerHTML(gameLossesElement, gsm.getNumGamesLost() + "");
+            
+            if (gsm.getNumGamesPlayed() > 0) {
+               
+                Element gamesResultHeader = statsDoc.getElement(GAME_RESULTS_HEADER_ID);
+                statsDoc.setInnerHTML(gamesResultHeader, "GAME RESULTS");
+                
+                Element gamesResultList = statsDoc.getElement(GAME_RESULTS_LIST_ID);
+                statsDoc.setInnerHTML(gamesResultList, START_TAG + HTML.Tag.BR + END_TAG);
+                
+                Iterator<KevinBaconGameData> it = gsm.getGamesHistoryIterator();
+                while(it.hasNext()) {
+                    
+                    KevinBaconGameData game = it.next();
+                    ArrayList<Connection> paths = game.getGamePath();
+                    String gameLine = "(" + game.getGameTimeDescription() + ")/" + paths.size();
+                    String lastActorId = "";
+                    for(Connection conn: paths) {
+                       if (conn != null) {
+                            if (!lastActorId.equals(conn.getActor1Id())) {
+                                gameLine += "---" + graph.getActor(conn.getActor1Id());
+                            }
+                            gameLine += "---" + graph.getFilm(conn.getFilmId());
+                           
+                            if  (conn.getActor2Id() != null) {
+                                gameLine += "---" + graph.getActor(conn.getActor2Id());
+                                lastActorId = conn.getActor2Id();
+                            }
+                        }
+                    }
+                    String liStyle = " style='color:blue;' ";
+                    String liText = START_TAG + HTML.Tag.LI + liStyle + END_TAG
+                            + gameLine
+                            + START_TAG + SLASH + HTML.Tag.LI + END_TAG;
+                    statsDoc.insertBeforeEnd(gamesResultList, liText);
+                }
+            }
         }
         // WE'LL LET THE ERROR HANDLER TAKE CARE OF ANY ERRORS,
         // WHICH COULD HAPPEN IF XML SETUP FILES ARE IMPROPERLY
