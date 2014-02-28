@@ -252,7 +252,18 @@ public class KevinBaconDocumentManager
                             }
                         }
                     }
-                    String liStyle = " style='color:blue;' ";
+                    String liStyle;
+                    liStyle = " style='color:blue;' ";
+                    //For perfect wins
+                    /*
+                    if(gamePerfectWinElement){
+                        liStyle = " style='color:red;'";    
+                    }
+                    //For Losses
+                    if(true){
+                        liStyle = " style='color:black;' ";   
+                    }
+                    */
                     String liText = START_TAG + HTML.Tag.LI + liStyle + END_TAG
                             + gameLine
                             + START_TAG + SLASH + HTML.Tag.LI + END_TAG;

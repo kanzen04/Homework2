@@ -4,12 +4,12 @@
         <property name="GAME_TITLE_TEXT" value="केविन बेकन के छह डिग्री"></property>
         
         <!-- THESE ARE THE GUI IMAGES -->
-        <property name="GAME_IMG_NAME"          value="EN_Game.png"></property>
-        <property name="STATS_IMG_NAME"         value="EN_Stats.png"></property>
-        <property name="HELP_IMG_NAME"          value="EN_Help.png"></property>
-        <property name="EXIT_IMG_NAME"          value="EN_Exit.png"></property>
-        <property name="NEW_GAME_IMG_NAME"      value="EN_NewGame.png"></property>
-        <property name="HOME_IMG_NAME"          value="EN_Home.png"></property>
+        <property name="GAME_IMG_NAME"          value="HI_Game.png"></property>
+        <property name="STATS_IMG_NAME"         value="HI_Stats.png"></property>
+        <property name="HELP_IMG_NAME"          value="HI_Help.png"></property>
+        <property name="EXIT_IMG_NAME"          value="HI_Exit.png"></property>
+        <property name="NEW_GAME_IMG_NAME"      value="HI_NewGame.png"></property>
+        <property name="HOME_IMG_NAME"          value="HI_Home.png"></property>
         
         <!-- DATA FILES TO LOAD -->
         <property name="GAME_FILE_NAME"         value="HI_GameDisplay.html"></property>

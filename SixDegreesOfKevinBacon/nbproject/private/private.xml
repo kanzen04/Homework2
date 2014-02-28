@@ -3,13 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/kanzen/NetBeansProjects/Homework2/SixDegreesOfKevinBacon/data/EN.xml</file>
+            <file>file:/Users/kanzen/NetBeansProjects/Homework2/SixDegreesOfKevinBacon/src/sdokb/game/Actor.java</file>
             <file>file:/Users/kanzen/NetBeansProjects/Homework2/SixDegreesOfKevinBacon/src/sdokb/game/KevinBaconGameData.java</file>
             <file>file:/Users/kanzen/NetBeansProjects/Homework2/SixDegreesOfKevinBacon/src/sdokb/game/KevinBaconGameStateManager.java</file>
-            <file>file:/Users/kanzen/NetBeansProjects/Homework2/SixDegreesOfKevinBacon/src/sdokb/ui/KevinBaconEventHandler.java</file>
-            <file>file:/Users/kanzen/NetBeansProjects/Homework2/SixDegreesOfKevinBacon/src/sdokb/ui/KevinBaconUI.java</file>
+            <file>file:/Users/kanzen/NetBeansProjects/Homework2/SixDegreesOfKevinBacon/src/sdokb/game/KevinBaconGameGraphManager.java</file>
             <file>file:/Users/kanzen/NetBeansProjects/Homework2/SixDegreesOfKevinBacon/src/sdokb/ui/KevinBaconDocumentManager.java</file>
-            <file>file:/Users/kanzen/NetBeansProjects/Homework2/SixDegreesOfKevinBacon/src/sdokb/file/KevinBaconFileUtilities.java</file>
             <file>file:/Users/kanzen/NetBeansProjects/Homework2/SixDegreesOfKevinBacon/src/sdokb/SixDegreesOfKevinBacon.java</file>
         </group>
     </open-files>
