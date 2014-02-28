@@ -272,14 +272,17 @@ public class KevinBaconGameStateManager
 
             gameInProgress.setWaitingForFilm(false);
             ui.reloadComboBox(nonCircularEdges);
-        } else {
+        } else 
+        {
              Actor _actor = gameGraphManager.getActor(guess.getId());
              lastActorId = guess.getId();
              lastNode.setActor2Id(guess.getId());
              gameInProgress.setLastConnection(lastNode);
              gameInProgress.addGamePath(lastNode);
 
-             if (nonCircularEdges == null) {
+             if (nonCircularEdges == null) 
+             
+             {
                 lastActorId = null;
                 gameInProgress.endGameAsLoss();
                 currentGameState = KevinBaconGameState.GAME_OVER;
@@ -287,7 +290,10 @@ public class KevinBaconGameStateManager
                 ui.enableGuessComboBox(false);
                 ui.getDocManager().addGameResultToStatsPage(gameInProgress);
                 return;
-             } else {
+             } 
+             else
+                 
+             {
                 ui.getDocManager().updateGuessesList();
                             
                 // Reset lastNode after we add the Node to the game path.

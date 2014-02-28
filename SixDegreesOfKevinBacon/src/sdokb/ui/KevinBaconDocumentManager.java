@@ -144,7 +144,7 @@ public class KevinBaconDocumentManager
                 Connection lastPath = gameInProgress.getLastConnection();
                 String guessString = "";
                 if (lastPath != null) {
-                    guessString = lastPath.getActor1Id() + " - " + lastPath.getFilmId() + " - " + lastPath.getActor2Id();
+                    guessString = graph.getActor(lastPath.getActor1Id().toString())+ " - " + graph.getFilm(lastPath.getFilmId().toString()) + " - " + graph.getActor(lastPath.getActor2Id().toString());
                 } else {
                     guessString = "";
                 }
